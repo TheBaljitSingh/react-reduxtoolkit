@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer  from "../features/products/productsSlice"
+import productReducer  from "../features/products/productsSlice.js"
 import authReducer from "../features/auth/authSlice.js"
 import counterReducer from "../features/counter/counterSlice.js"
 
