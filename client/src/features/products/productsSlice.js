@@ -1,10 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+//its a promise function which have three state: rejected, fullfill, pending
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
-    const res = await axios.get("https://dummyjson.com/products");
+  async ({page=1, limit=10}) => {
+
+    const offset = (page-1)*limit;
+
+    console.log(page, limit, offset);
+
+    const res = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${offset}`);
     return res.data; // returns { products: [...], total, skip, limit }
   }
 );
